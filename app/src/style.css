@@ -22,6 +22,7 @@ h2 {
 }
 
 #randomize {
-  margin-left: 39rem;
+  display: block;
+  margin: 0 auto;
   padding: 4px;
 }
