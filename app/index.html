@@ -19,7 +19,7 @@
             </li>
           </ul>
         </div>
-        <form action="njn">
+        <form action="place_holder">
           <label for="">Look for Meal</label>
           <input type="text" name="" id="">
           <button id="search">Search Meal</button>
@@ -32,37 +32,30 @@
             <!-- Vegan or not -->
           </section>
         </div>
-        <h2>Don't know what to eat?</h2>
-        <button id="randomize">Click me</button>
+        <h2>Still Don't know what to eat?</h2>
+        <p>Let's see if we can help you out</p>
+        <div id="button-container">
+          <section class="devs-favorites">
+            <div class="card">
+              <img src="" alt="Image 1">
+              <p></p>
+            </div>
+          </section>
+          <section class="devs-favorites">
+            <div class="card">
+              <img src="" alt="Image 2">
+              <p></p>
+            </div>
+          </section>
+          <section class="devs-favorites">
+            <div class="card">
+              <img src="" alt="Image 3">
+              <p></p>
+            </div>
+          </section>
+        </div>
+        
       </main>
     </div>
   </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Tester</title>
-</head>
-<body>
- <h1>Test your API!</h1>
- <script>
-   const testRoute = async (url) => {
-     const response = await fetch(url)
-     const data = await response.json()
-     console.log('data:', data);
-   }
-
-
-   const url1 = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-   const url2 = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian';
-   const url3 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772';
-  
-   testRoute(url1);
-   testRoute(url2);
-   testRoute(url3)
- </script>
-</body>
-</html> -->

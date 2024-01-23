@@ -7,6 +7,17 @@ export const region = async () => {
   const filteredRegions = eachRegion.meals.filter((regions => mainRegion.includes(regions.strArea)))
 
   console.log(filteredRegions)
+
+  const listOfRegions = document.querySelector('.dropdown-menu')
+  filteredRegions.forEach(region => {
+    const li = document.createElement('li')
+    const a = document.createElement('a')
+
+    a.href='#'
+    a.textContent = region.strArea
+    li.append(a)
+    listOfRegions.append(li)
+  })
 };
 
 export const selectedRegion = async(area) => {

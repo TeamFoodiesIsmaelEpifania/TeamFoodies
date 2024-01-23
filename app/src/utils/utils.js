@@ -11,7 +11,7 @@ export const fetchData = async (url, options = {}) => {
     return data;
   } catch (error) {
     // Handle errors here
-    console.error('Error fetching data:', error.message);
+    console.warn('Error fetching data:', error.message);
     throw error; // Re-throw the error to propagate it further if needed
   }
 };
