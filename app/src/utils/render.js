@@ -1,46 +1,46 @@
-import { fetchData } from './utils';
+import { fetchData } from "./utils";
 
 export const region = async () => {
-  const eachRegion = await fetchData(
-    'https://www.themealdb.com/api/json/v1/1/list.php?a=list'
-  );
+  const eachRegion = await fetchData('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
 
-  // console.log(eachRegion)
-  const fiveRegions = eachRegion.meals.slice(0, 4);
+  const fiveRegions = eachRegion.meals.slice(0, 4)
 
-  const listOfRegions = document.querySelector('.dropdown-menu');
-  fiveRegions.forEach((region) => {
+  const listOfRegions = document.querySelector('.dropdown-menu')
+
+  const handleLiClick = async (selectedRegion) => {
+    const eachRegion = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedRegion}`;
+
+    const regionData = await fetchData(eachRegion);
+
+    console.log('Selected region Meals:', regionData.meals);
+  };
+  
+  fiveRegions.forEach(region => {
     const li = document.createElement('li');
-    const a = document.createElement('a');
 
-    a.href = '#';
-    a.textContent = region.strArea;
-    li.append(a);
-    listOfRegions.append(li);
+    li.textContent = region.strArea;
+
+    listOfRegions.append(li)
+
+    li.addEventListener('click', () => {
+      handleLiClick(region.strArea);
+    });
   });
 };
 
-const mealListContainer = document.getElementById('mealList');
-
 export const selectedRegion = async (area) => {
-  const oneRegion = await fetchData(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
-  );
+  const oneRegion = await fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
 
+  const mealListContainer = document.getElementById('mealList');
   mealListContainer.innerHTML = '';
-
   oneRegion.meals.forEach((meal) => {
     const { idMeal, strMeal, strMealThumb } = meal;
-
     const mealDiv = document.createElement('div');
-
     const mealHTML = `
     <img src="${strMealThumb}" alt="${strMeal}">
     <p>Name: ${strMeal}</p>
     <p>ID: ${idMeal}</p>`;
-
     mealDiv.innerHTML = mealHTML;
-
     mealListContainer.appendChild(mealDiv);
   });
 };
