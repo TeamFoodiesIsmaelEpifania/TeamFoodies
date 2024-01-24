@@ -10,7 +10,7 @@ const main = (e) => {
 
   region();
   randomMeals(3);
-  selectedRegion('Mexican');
+  selectedRegion(region)
 }
 
 main()
