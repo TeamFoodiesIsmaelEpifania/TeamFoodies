@@ -1,6 +1,6 @@
 import './style.css';
-import { region } from './utils/render';
-import { selectedRegion } from './utils/render';
+import { apiFetch, region } from './utils/render';
+
 import { randomMeals } from './utils/render';
 
 const main = (e) => {
@@ -10,7 +10,8 @@ const main = (e) => {
 
   region();
   randomMeals(3);
-  selectedRegion('American');
+  apiFetch('www.themealdb.com/api/json/v1/1/filter.php?a=', 'Mexican');
+  apiFetch('www.themealdb.com/api/json/v1/1/random.php');
 };
 
 main();
