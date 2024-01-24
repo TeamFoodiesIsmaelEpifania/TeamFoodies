@@ -47,9 +47,11 @@ export const selectedRegion = async (area) => {
 
 export const randomMeals = async (numMeals) => {
   for (let i = 0; i < numMeals; i++) {
-    const oneMeal = await fetchData('https://www.themealdb.com/api/json/v1/1/random.php');
-    
-    const { idMeal, strMeal, strMealThumb } = oneMeal.meals[0]; 
+    const oneMeal = await fetchData(
+      'https://www.themealdb.com/api/json/v1/1/random.php'
+    );
+
+    const { idMeal, strMeal, strMealThumb } = oneMeal.meals[0];
 
     console.log({ idMeal, strMeal, strMealThumb });
 
@@ -61,4 +63,4 @@ export const randomMeals = async (numMeals) => {
     `;
     renderOneMeal.appendChild(mealDiv);
   }
-}
+};
