@@ -3,13 +3,11 @@ import { fetchData } from "./utils";
 export const region = async () => {
   const eachRegion = await fetchData('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
 
-  const mainRegion = ['American', 'Spanish', 'Mexican', 'Chinese', 'Italian', 'Jamaican', 'British', 'French', 'Portuguese', 'Greek' ]
-  const filteredRegions = eachRegion.meals.filter((regions => mainRegion.includes(regions.strArea)))
-
-  console.log(filteredRegions)
+  // console.log(eachRegion)
+  const fiveRegions = eachRegion.meals.slice(0,4)
 
   const listOfRegions = document.querySelector('.dropdown-menu')
-  filteredRegions.forEach(region => {
+  fiveRegions.forEach(region => {
     const li = document.createElement('li')
     const a = document.createElement('a')
 
