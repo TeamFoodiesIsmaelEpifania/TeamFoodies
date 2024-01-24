@@ -1,7 +1,7 @@
-import './style.css'
-import { region } from './utils/render'
-import { selectedRegion } from './utils/render'
-import { randomMeals } from './utils/render'
+import './style.css';
+import { region } from './utils/render';
+import { selectedRegion } from './utils/render';
+import { randomMeals } from './utils/render';
 
 const main = (e) => {
   if (e) {
@@ -10,7 +10,7 @@ const main = (e) => {
 
   region();
   randomMeals(3);
-  selectedRegion('Mexican');
-}
+  selectedRegion('American');
+};
 
-main()
+main();
