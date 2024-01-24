@@ -7,12 +7,16 @@ export const region = async () => {
 
   const listOfRegions = document.querySelector('.dropdown-menu')
 
-  const handleLiClick = async (selectedRegion) => {
-    const eachRegion = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedRegion}`;
-
-    const regionData = await fetchData(eachRegion);
-
-    console.log('Selected region Meals:', regionData.meals);
+  const handleLiClick = async (selectedRegionCallback, regionName) => {
+    const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${regionName}`;
+    try {
+      const regionData = await fetchData(apiUrl);
+      console.log('Selected region Meals:', regionData.meals);
+      // Call the callback function with the region name
+      selectedRegionCallback(regionName);
+    } catch (error) {
+      console.error('Error fetching region data:', error);
+    }
   };
   
   fiveRegions.forEach(region => {
@@ -23,7 +27,7 @@ export const region = async () => {
     listOfRegions.append(li)
 
     li.addEventListener('click', () => {
-      handleLiClick(region.strArea);
+      handleLiClick(selectedRegion, region.strArea);
     });
   });
 };
@@ -37,9 +41,9 @@ export const selectedRegion = async (area) => {
     const { idMeal, strMeal, strMealThumb } = meal;
     const mealDiv = document.createElement('div');
     const mealHTML = `
-    <img src="${strMealThumb}" alt="${strMeal}">
-    <p>Name: ${strMeal}</p>
-    <p>ID: ${idMeal}</p>`;
+      <img src="${strMealThumb}" alt="${strMeal}">
+      <p>Name: ${strMeal}</p>
+      <p>ID: ${idMeal}</p>`;
     mealDiv.innerHTML = mealHTML;
     mealListContainer.appendChild(mealDiv);
   });

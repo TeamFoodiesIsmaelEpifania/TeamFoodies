@@ -9,8 +9,13 @@ const main = (e) => {
   }
 
   region();
+
+  document.querySelector('.dropdown-menu').addEventListener('click', (event) => {
+    const selectedRegionName = event.target.textContent.trim();
+    selectedRegion(selectedRegionName);
+  });
+
   randomMeals(3);
-  // selectedRegion('American');
 };
 
 main();
