@@ -10,12 +10,7 @@ const main = (e) => {
 
   region();
   randomMeals(3);
-<<<<<<< HEAD
-  selectedRegion(region)
-}
-=======
-  selectedRegion('American');
+  // selectedRegion('American');
 };
->>>>>>> 4addbbde8e82e048686ae2c6aaf2936d15b26228
 
 main();
