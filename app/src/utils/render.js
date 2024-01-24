@@ -20,8 +20,27 @@ export const region = async () => {
   })
 };
 
+
 export const selectedRegion = async(area) => {
   const oneRegion = await fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
   
   console.log(oneRegion)
+}
+
+export const randomMeals = async (numMeals) => {
+  for (let i = 0; i < numMeals; i++) {
+    const oneMeal = await fetchData('https://www.themealdb.com/api/json/v1/1/random.php');
+    
+    const { idMeal, strMeal, strMealThumb } = oneMeal.meals[0]; 
+
+    console.log({ idMeal, strMeal, strMealThumb });
+
+    const renderOneMeal = document.querySelector('#oneMeal');
+    const mealDiv = document.createElement('div');
+    mealDiv.innerHTML = `
+      <img src="${strMealThumb}" alt="Image of Food">
+      <p>${strMeal}</p>
+    `;
+    renderOneMeal.appendChild(mealDiv);
+  }
 }
