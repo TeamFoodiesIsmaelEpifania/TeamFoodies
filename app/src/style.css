@@ -1,9 +1,13 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: monospace;
 }
+
+html, body {
+  width: 100%;
+}
+
 
 h1 {
   text-align: center;
@@ -111,4 +115,11 @@ p {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    text-align: center;
+    padding: 1rem;
+  }
 }
