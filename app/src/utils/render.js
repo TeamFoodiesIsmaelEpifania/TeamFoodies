@@ -6,18 +6,6 @@ export const region = async () => {
   const fiveRegions = eachRegion.meals.slice(0, 4)
 
   const listOfRegions = document.querySelector('.dropdown-menu')
-
-  const handleLiClick = async (selectedRegionCallback, regionName) => {
-    const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${regionName}`;
-    try {
-      const regionData = await fetchData(apiUrl);
-      console.log('Selected region Meals:', regionData.meals);
-      // Call the callback function with the region name
-      selectedRegionCallback(regionName);
-    } catch (error) {
-      console.error('Error fetching region data:', error);
-    }
-  };
   
   fiveRegions.forEach(region => {
     const li = document.createElement('li');
@@ -25,10 +13,6 @@ export const region = async () => {
     li.textContent = region.strArea;
 
     listOfRegions.append(li)
-
-    li.addEventListener('click', () => {
-      handleLiClick(selectedRegion, region.strArea);
-    });
   });
 };
 
@@ -43,7 +27,9 @@ export const selectedRegion = async (area) => {
     const mealHTML = `
       <img src="${strMealThumb}" alt="${strMeal}">
       <p>Name: ${strMeal}</p>
-      <p>ID: ${idMeal}</p>`;
+      <p>ID: ${idMeal}</p>
+      <button class='learnMore'>Learn More</button>
+      `;
     mealDiv.innerHTML = mealHTML;
     mealListContainer.appendChild(mealDiv);
   });
