@@ -29,7 +29,7 @@ export const selectedRegion = async (area) => {
     <img src="${strMealThumb}" alt="${strMeal}" class="meal-image">
     <p>Name: ${strMeal}</p>
     <p>ID: ${idMeal}</p>
-    <button class='moreInfo'>Click for more info</button>
+    <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
     </div>
     `;
     mealSec.innerHTML = mealHTML;
@@ -43,16 +43,24 @@ export const randomMeals = async (numMeals) => {
       'https://www.themealdb.com/api/json/v1/1/random.php'
     );
 
-    const { idMeal, strMeal, strMealThumb } = oneMeal.meals[0];
-
-    console.log({ idMeal, strMeal, strMealThumb });
+    const {  idMeal, strMeal, strMealThumb } = oneMeal.meals[0];
 
     const renderOneMeal = document.querySelector('#oneMeal');
     const mealDiv = document.createElement('div');
     mealDiv.innerHTML = `
-      <img src="${strMealThumb}" alt="Image of Food">
+    <div class='eachRender'>
+      <img src="${strMealThumb}" alt="Image of Food" class="meal-image">
       <p>${strMeal}</p>
+      <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+      </div>
     `;
     renderOneMeal.appendChild(mealDiv);
   }
+};
+
+export const clickForMore = async (mealId) => {
+  const moreInfo = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+
+  const { strMealThumb, strInstructions } = moreInfo.meals[0];
+  console.log({ strMealThumb, strInstructions });
 };
