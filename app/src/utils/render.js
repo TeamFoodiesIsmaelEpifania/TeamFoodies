@@ -6,18 +6,6 @@ export const region = async () => {
   const fiveRegions = eachRegion.meals.slice(0, 4)
 
   const listOfRegions = document.querySelector('.dropdown-menu')
-
-  const handleLiClick = async (selectedRegionCallback, regionName) => {
-    const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${regionName}`;
-    try {
-      const regionData = await fetchData(apiUrl);
-      console.log('Selected region Meals:', regionData.meals);
-      // Call the callback function with the region name
-      selectedRegionCallback(regionName);
-    } catch (error) {
-      console.error('Error fetching region data:', error);
-    }
-  };
   
   fiveRegions.forEach(region => {
     const li = document.createElement('li');
@@ -25,10 +13,6 @@ export const region = async () => {
     li.textContent = region.strArea;
 
     listOfRegions.append(li)
-
-    li.addEventListener('click', () => {
-      handleLiClick(selectedRegion, region.strArea);
-    });
   });
 };
 
@@ -39,13 +23,17 @@ export const selectedRegion = async (area) => {
   mealListContainer.innerHTML = '';
   oneRegion.meals.forEach((meal) => {
     const { idMeal, strMeal, strMealThumb } = meal;
-    const mealDiv = document.createElement('div');
+    const mealSec = document.createElement('section');
     const mealHTML = `
-      <img src="${strMealThumb}" alt="${strMeal}">
-      <p>Name: ${strMeal}</p>
-      <p>ID: ${idMeal}</p>`;
-    mealDiv.innerHTML = mealHTML;
-    mealListContainer.appendChild(mealDiv);
+    <div class='eachRender'>
+    <img src="${strMealThumb}" alt="${strMeal}" class="meal-image">
+    <p>Name: ${strMeal}</p>
+    <p>ID: ${idMeal}</p>
+    <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+    </div>
+    `;
+    mealSec.innerHTML = mealHTML;
+    mealListContainer.appendChild(mealSec);
   });
 };
 
@@ -55,16 +43,24 @@ export const randomMeals = async (numMeals) => {
       'https://www.themealdb.com/api/json/v1/1/random.php'
     );
 
-    const { idMeal, strMeal, strMealThumb } = oneMeal.meals[0];
-
-    console.log({ idMeal, strMeal, strMealThumb });
+    const {  idMeal, strMeal, strMealThumb } = oneMeal.meals[0];
 
     const renderOneMeal = document.querySelector('#oneMeal');
     const mealDiv = document.createElement('div');
     mealDiv.innerHTML = `
-      <img src="${strMealThumb}" alt="Image of Food">
+    <div class='eachRender'>
+      <img src="${strMealThumb}" alt="Image of Food" class="meal-image">
       <p>${strMeal}</p>
+      <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+      </div>
     `;
     renderOneMeal.appendChild(mealDiv);
   }
+};
+
+export const clickForMore = async (mealId) => {
+  const moreInfo = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+
+  const { strMealThumb, strInstructions } = moreInfo.meals[0];
+  console.log({ strMealThumb, strInstructions });
 };
