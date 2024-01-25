@@ -16,6 +16,37 @@ h1 {
   align-items: center;
 }
 
+#mealList {
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+section {
+  margin: 1rem;
+  color: white;
+}
+
+.moreInfo {
+  margin: 1rem;
+  padding: 5px;
+}
+
+.eachRender {
+  background-color: darkblue;
+  border-radius: 10px;
+}
+
+.meal-image {
+  width: 30rem;
+  height: auto;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
 #search {
   padding: 4px;
 }
