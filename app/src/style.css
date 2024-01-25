@@ -5,6 +5,10 @@
   font-family: courier new;
 }
 
+.gif-container {
+  text-align: center;
+}
+
 body {
   width: 100%;
   padding: 1rem;
