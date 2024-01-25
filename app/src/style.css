@@ -7,22 +7,67 @@
 
 h1 {
   text-align: center;
+  padding: 1rem;
 }
 
 #dropDown-container {
   display: flex;
-  padding: 10rem;
   justify-content: center;
   align-items: center;
+  padding: 1.5rem;
+}
+
+.dropdown {
+  list-style: none;
+}
+
+.dropdown > li {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  background: black;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 15px;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
 }
 
 #mealList {
-  border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  margin-top: 10rem;
 }
 
 section {
@@ -55,6 +100,7 @@ form {
   text-align: center;
   padding: 4rem;
 }
+
 
 h2 {
   text-align: center;
