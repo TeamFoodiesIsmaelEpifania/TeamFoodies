@@ -1,7 +1,6 @@
 import './style.css';
 import { region, selectedRegion, randomMeals, clickForMore } from './utils/render';
 
-
 const main = (e) => {
   if (e) {
     e.preventDefault();
@@ -14,6 +13,7 @@ const main = (e) => {
 
   region();
   randomMeals(3);
+  clickForMore('52855')
 };
 
 main();
