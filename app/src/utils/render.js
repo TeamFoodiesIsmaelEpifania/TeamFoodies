@@ -33,7 +33,7 @@ export const selectedRegion = async (area) => {
     </div>
     `;
     mealSec.innerHTML = mealHTML;
-    mealListContainer.appendChild(mealSec);
+    mealListContainer.append(mealSec);
   });
 };
 
@@ -67,11 +67,11 @@ export const clickForMore = async (mealId) => {
   const { strInstructions, ...ingredients } = moreInfo.meals[0];
 
   const allIngredients = Object.keys(ingredients)
-  .filter((key) => key.includes('strIngredient'))
-  .map((key) => ingredients[key])
+    .filter((key) => key.includes('strIngredient'))
+    .map((key) => ingredients[key]);
 
   const modal = document.createElement('dialog');
-  modal.classList.add('modal');
+  modal.className = 'modal';
 
   modal.innerHTML = `
     <p>How to Make:</p>
@@ -84,7 +84,64 @@ export const clickForMore = async (mealId) => {
   document.body.append(modal);
 
   modal.showModal();
-
 };
 
+export const favMeal1 = async () => {
+  const favMeal = await fetchData("https://www.themealdb.com/api/json/v1/1/lookup.php?i=53016");
 
+  const { idMeal, strMeal, strMealThumb } = favMeal.meals[0];
+
+  const fav1Section = document.getElementById("fav1");
+  const section1 = document.createElement('section');
+  section1.innerHTML = `
+  <img src="${strMealThumb}" alt="${strMeal}" class="meal-image">
+  <p>Name: ${strMeal}</p>
+  <p>ID: ${idMeal}</p>
+  <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+  `;
+  fav1Section.append(section1)
+
+  section1.querySelector('.moreInfo').addEventListener('click', () => {
+    clickForMore(idMeal);
+  });
+};
+
+export const favMeal2 = async() => {
+  const favMeal = await fetchData("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52854")
+  
+  const { idMeal, strMeal, strMealThumb } = favMeal.meals[0];
+
+  const fav2Section = document.getElementById("fav1");
+  const section2 = document.createElement('section');
+  section2.innerHTML = `
+  <img src="${strMealThumb}" alt="${strMeal}" class="meal-image">
+  <p>Name: ${strMeal}</p>
+  <p>ID: ${idMeal}</p>
+  <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+  `;
+  fav2Section.append(section2)
+
+  section2.querySelector('.moreInfo').addEventListener('click', () => {
+    clickForMore(idMeal);
+  });
+}
+
+export const favMeal3 = async() => {
+  const favMeal = await fetchData("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52803")
+
+  const { idMeal, strMeal, strMealThumb } = favMeal.meals[0];
+
+  const fav3Section = document.getElementById("fav1");
+  const section3 = document.createElement('section');
+  section3.innerHTML = `
+  <img src="${strMealThumb}" alt="${strMeal}" class="meal-image">
+  <p>Name: ${strMeal}</p>
+  <p>ID: ${idMeal}</p>
+  <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
+  `;
+  fav3Section.append(section3)
+
+  section3.querySelector('.moreInfo').addEventListener('click', () => {
+    clickForMore(idMeal);
+  });
+}

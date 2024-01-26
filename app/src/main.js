@@ -1,5 +1,6 @@
 import './style.css';
 import { region, selectedRegion, randomMeals, clickForMore } from './utils/render';
+import { favMeal1, favMeal2, favMeal3 } from './utils/render';
 
 const handleMealListClick = (event) => {
   const moreInfoButton = event.target;
@@ -22,7 +23,7 @@ const main = (e) => {
 
   const mealListContainer = document.querySelector('#mealList');
   mealListContainer.addEventListener('click', handleMealListClick);
-
+  
   document.body.addEventListener('click', (event) => {
     const closeButton = event.target.closest('.close-button');
   
@@ -34,6 +35,9 @@ const main = (e) => {
 
   region();
   randomMeals(3);
+  favMeal1();
+  favMeal2();
+  favMeal3();
 };
 
 main();
