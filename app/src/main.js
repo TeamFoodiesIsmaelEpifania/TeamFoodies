@@ -23,14 +23,12 @@ const main = (e) => {
   const mealListContainer = document.querySelector('#mealList');
   mealListContainer.addEventListener('click', handleMealListClick);
 
-  const closeModal = () => {
-    const modal = document.querySelector('.modal');
-    modal.remove();
-  };
-  
   document.body.addEventListener('click', (event) => {
-    if (event.target.classList.contains('close-button')) {
-      closeModal();
+    const closeButton = event.target.closest('.close-button');
+  
+    if (closeButton) {
+      const modal = document.querySelector('.modal');
+      modal.remove();
     }
   });
 
