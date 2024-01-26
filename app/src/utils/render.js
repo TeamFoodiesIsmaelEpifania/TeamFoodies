@@ -54,27 +54,29 @@ export const randomMeals = async (numMeals) => {
       <button class='moreInfo' mealId="${idMeal}">Click for more info</button>
       </div>
     `;
-    renderOneMeal.appendChild(mealDiv);
+    renderOneMeal.append(mealDiv);
+
+    mealDiv.querySelector('.moreInfo').addEventListener('click', () => {
+      clickForMore(idMeal);
+    });
   }
 };
 
 export const clickForMore = async (mealId) => {
   const moreInfo = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
-
   const { strInstructions, ...ingredients } = moreInfo.meals[0];
 
-  const allIngredients = [];
-  for (let i = 0; i <= 20; i++) {
-    const listOfIngredient = ingredients[`strIngredient${i}`];
-    if (listOfIngredient) allIngredients.push(listOfIngredient);
-  }
+  const allIngredients = Object.keys(ingredients)
+  .filter((key) => key.includes('strIngredient'))
+  .map((key) => ingredients[key])
 
   const modal = document.createElement('dialog');
-  modal.className = 'modal';
-  modal.id = 'modal';
+  modal.classList.add('modal');
 
   modal.innerHTML = `
+    <p>How to Make:</p>
     <p>${strInstructions}</p>
+    <p>Ingredients:</p>
     <p>${allIngredients.join(', ')}</p>
     <button class='close-button'>X</button>
   `;
@@ -83,11 +85,6 @@ export const clickForMore = async (mealId) => {
 
   modal.showModal();
 
-  const closeModalButton = modal.querySelector('.close-button');
-  closeModalButton.addEventListener('click', () => {
-    modal.close();
-  });
-
-  console.log({ strInstructions, allIngredients });
 };
+
 

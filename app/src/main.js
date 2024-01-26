@@ -1,6 +1,15 @@
 import './style.css';
 import { region, selectedRegion, randomMeals, clickForMore } from './utils/render';
 
+const handleMealListClick = (event) => {
+  const moreInfoButton = event.target;
+  const mealId = moreInfoButton.getAttribute('mealId');
+
+  if (mealId) {
+    clickForMore(mealId);
+  }
+};
+
 const main = (e) => {
   if (e) {
     e.preventDefault();
@@ -12,13 +21,16 @@ const main = (e) => {
   });
 
   const mealListContainer = document.querySelector('#mealList');
+  mealListContainer.addEventListener('click', handleMealListClick);
 
-  mealListContainer.addEventListener('click', (event) => {
-    const moreInfoButton = event.target.closest('.moreInfo');
-    
-    if (moreInfoButton) {
-      const mealId = moreInfoButton.getAttribute('mealId');
-      clickForMore(mealId);
+  const closeModal = () => {
+    const modal = document.querySelector('.modal');
+    modal.remove();
+  };
+  
+  document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('close-button')) {
+      closeModal();
     }
   });
 
