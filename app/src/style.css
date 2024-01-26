@@ -1,24 +1,28 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  font-family: courier new;
 }
 
-html, body {
+body {
   width: 100%;
+  padding: 1rem;
 }
 
 
 h1 {
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
+  color: rgb(48, 90, 120);
+  border: 5px;
 }
 
 #dropDown-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
+  padding: 3rem;
 }
 
 .dropdown {
@@ -74,13 +78,24 @@ section {
   color: white;
 }
 
-/* .moreInfo {
+.moreInfo {
+border: 1px solid black;
+padding: 0.5rem;
 }
 
 .eachRender {
+padding: 3rem;
+box-sizing: border-box;
+max-height: 500px;
+border-radius: 40px;
+background-color: rgb(96, 156, 199);
+text-align: center;
 }
 
 .meal-image {
+width: 20rem;
+height: auto;
+border-radius: 40px;
 
 } */
 
@@ -90,23 +105,27 @@ section {
 
 form {
   text-align: center;
+  padding: 2rem;
 }
 
 
 h2 {
   text-align: center;
+  padding: 0.5rem;
 }
 
 p {
   text-align: center;
-  color: white;
+  word-wrap: break-word;
+  color: black;
+  padding: 0.5rem;
 }
 
 #button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
+  margin: 2rem;
 }
 
 #oneMeal {

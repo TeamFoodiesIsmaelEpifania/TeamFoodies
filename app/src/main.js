@@ -11,9 +11,19 @@ const main = (e) => {
     selectedRegion(selectedRegionName);
   });
 
+  const mealListContainer = document.querySelector('#mealList');
+
+  mealListContainer.addEventListener('click', (event) => {
+    const moreInfoButton = event.target.closest('.moreInfo');
+    
+    if (moreInfoButton) {
+      const mealId = moreInfoButton.getAttribute('mealId');
+      clickForMore(mealId);
+    }
+  });
+
   region();
   randomMeals(3);
-  clickForMore('52855')
 };
 
 main();
