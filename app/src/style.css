@@ -2,7 +2,12 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: courier new;
+}
+
+.gif-container {
+  text-align: center;
 }
 
 body {
@@ -59,7 +64,7 @@ h1 {
 }
 
 .dropdown-menu li {
-  padding: 15px;
+  padding: 10px;
   color: #fff;
   border-bottom: 1px solid #ccc;
   width: 100%;
@@ -86,14 +91,14 @@ padding: 0.5rem;
 .eachRender {
 padding: 3rem;
 box-sizing: border-box;
-max-height: 500px;
+max-height: 50rem;
 border-radius: 40px;
 background-color: rgb(96, 156, 199);
 text-align: center;
 }
 
 .meal-image {
-width: 20rem;
+width: 15rem;
 height: auto;
 border-radius: 40px;
 
