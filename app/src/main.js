@@ -32,9 +32,11 @@ const main = (e) => {
       modal.remove();
     }
   });
+  document.querySelector('#randomize button').addEventListener('click', async () => {
+    await randomMeals(3);
+  });
 
   region();
-  randomMeals(3);
   favMeal1();
   favMeal2();
   favMeal3();

@@ -38,6 +38,9 @@ export const selectedRegion = async (area) => {
 };
 
 export const randomMeals = async (numMeals) => {
+  const renderOneMeal = document.querySelector('#oneMeal');
+  renderOneMeal.innerHTML = '';
+
   for (let i = 0; i < numMeals; i++) {
     const oneMeal = await fetchData(
       'https://www.themealdb.com/api/json/v1/1/random.php'
